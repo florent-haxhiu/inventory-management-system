@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	r := routes.RouteMe()
+	r := routes.Router()
 	http.ListenAndServe(":3000", r)
 }
