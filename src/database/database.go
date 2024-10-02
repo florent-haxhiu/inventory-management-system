@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"os"
 	"time"
 
 	"github.com/google/uuid"
@@ -30,13 +31,12 @@ type User struct {
 }
 
 const (
-	user    = "florenthaxhiu"
 	dbname  = "inventoryManagement"
 	sslMode = "disable"
 )
 
 func ConnectToDatabase() *sql.DB {
-	connStr := fmt.Sprintf("user=%s dbname=%s sslmode=%s", user, dbname, sslMode)
+	connStr := fmt.Sprintf("user=%s dbname=%s sslmode=%s", os.Getenv("USER"), dbname, sslMode)
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
 		log.Fatal(err)
